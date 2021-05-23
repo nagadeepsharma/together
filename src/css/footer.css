@@ -1,0 +1,16 @@
+.footer{
+    margin-top:5%;
+    height: 13vh;
+    background-color: #184478;
+}
+.gridfooter{
+    height: 100% !important;
+    justify-content: space-evenly !important;
+}
+.footerlinks{
+    color: #f4f4f4 !important;
+    font-weight: 100 !important;
+}
+.gridsocial{
+    justify-content: center !important;
+}

@@ -1,0 +1,11 @@
+.home2{
+    height: 90vh;
+}
+.timeline{
+    height: 100%;
+    
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}

@@ -1,0 +1,16 @@
+.navbar{
+    top: 0%;
+    height: 10vh !important;
+    background-color: white !important;
+    z-index: 1000 !important;
+}
+.h2{
+    color: #184478 !important;
+}
+span{
+    color: #FF570F;
+}
+.icon{
+    color: #184478;
+    
+}

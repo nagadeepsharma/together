@@ -1,0 +1,11 @@
+.campaignshow{
+    height: 67vh;
+    overflow: scroll;
+}
+.box{
+    display: flex;
+    height: 20%;
+    border: 1px solid #f4f4f4;
+    align-items: center;
+    justify-content: center;
+}

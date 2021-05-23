@@ -1,0 +1,27 @@
+.grid{
+    height: 100vh !important;
+    justify-content: center !important;
+    align-content: center;
+}
+.gridrow{
+    
+    justify-content: center !important;
+    align-items:center !important ;
+}
+.gridrow1{
+    height: 12%;
+    background-color:#F4F4F4;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly !important;
+
+}
+.track{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 50px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}

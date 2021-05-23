@@ -1,0 +1,16 @@
+.request{
+    display: flex;
+    flex-direction: column;
+    height: 67vh;
+    justify-content: center;
+    align-items: center;
+}
+.requestform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 80%;
+    justify-content: space-evenly;
+    width: 80%;
+}
