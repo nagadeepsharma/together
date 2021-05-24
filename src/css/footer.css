@@ -1,6 +1,6 @@
 .footer{
     margin-top:5%;
-    height: 13vh;
+    height: 20vh;
     background-color: #184478;
 }
 .gridfooter{
@@ -13,4 +13,13 @@
 }
 .gridsocial{
     justify-content: center !important;
+}
+.i{
+    color:#f4f4f4 !important;
+    cursor: pointer;
+    transition: 0.5s ;
+    
+}
+.i:hover{
+    color: orange !important;
 }
