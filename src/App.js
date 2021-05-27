@@ -12,6 +12,7 @@ import Campaignshow from './components/Campaignshow';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Campaigncreaterequest from './components/Campaigncreaterequest';
 import Campaignrequest from './components/Campaignrequest';
+import Errorc from './components/Errorc'
 function App() {
   useEffect(()=>{
     AOS.init()
@@ -28,6 +29,7 @@ function App() {
       <Route path="/" exact component={Home} />
       <Route path="/campaigncreaterequest/:createaddress" component={Campaigncreaterequest} />
       <Route path="/campaignrequest/:campaignaddress" component={Campaignrequest} />
+      <Route component={Errorc} />
     </div>
     </BrowserRouter>
     </Container>
