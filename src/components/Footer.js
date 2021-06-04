@@ -1,4 +1,7 @@
 import React from 'react'
+import naga from '../assets/18881A05D5.jpeg'
+import durga from '../assets/18881A05F4.jpeg'
+import mahi from '../assets/18881A05H0.jpeg'
 import { Button, Grid, GridColumn, GridRow, Header, Icon, Modal,Image } from 'semantic-ui-react'
 
 import '../css/footer.css'
@@ -37,13 +40,13 @@ function Footer() {
                 <Modal.Header>Team</Modal.Header>
         <div style={{display:"flex",justifyContent:"space-evenly"}}>
          <Modal.Content  image>
-           <Image size="medium" src='https://react.semantic-ui.com/images/wireframe/image-square.png' wrapped />
+           <Image size="medium" src={naga} wrapped />
          </Modal.Content>
          <Modal.Content image>
-           <Image size='medium' src='https://react.semantic-ui.com/images/wireframe/image-square.png' wrapped />
+           <Image size='medium' src={durga} wrapped />
          </Modal.Content>
          <Modal.Content image>
-           <Image size='medium' src='https://react.semantic-ui.com/images/wireframe/image-square.png' wrapped />
+           <Image size="medium" src={mahi} wrapped />
          </Modal.Content>
          </div>
          <Modal.Actions>
