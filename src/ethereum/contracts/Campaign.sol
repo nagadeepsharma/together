@@ -1,10 +1,10 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.6.0;
 
 contract Campaign{
     struct Request{
         string description;
         uint value;
-        address recipient;
+        address payable recipient;
         bool complete;
         mapping(address=>bool) approvals;
         uint approvalCount;
@@ -15,15 +15,19 @@ contract Campaign{
     mapping(address=>bool) public approvers;
     uint public approversCount;
     Request[] public requests;
+    string public filehash;
+    string public idea;
     
     modifier restricted(){
         require(msg.sender == manager);
         _;
     }
     
-    function Campaign(uint minimum, address campaignCreator) public {
+    constructor(uint minimum, address campaignCreator,string memory i,string memory fh) public {
         manager = campaignCreator;
         minimumContribution = minimum;
+        filehash=fh;
+        idea=i;
     }
     
     function contribute() public payable{
@@ -34,7 +38,7 @@ contract Campaign{
         approversCount++;
     }
     
-    function createRequest(string description, uint value, address recipient) public restricted{
+    function createRequest(string memory description, uint value, address payable recipient) public restricted{
         Request memory newRequest = Request({
             description : description,
             value : value,
@@ -65,12 +69,14 @@ contract Campaign{
         request.complete = true;
     }
 
-    function getSummary() public view returns(uint, uint, uint, uint, address){
+    function getSummary() public view returns(uint, uint, uint, uint,string memory,string memory, address){
        return(
             minimumContribution,
-            this.balance,
+            address(this).balance,
             requests.length,
             approversCount,
+            filehash,
+            idea,
             manager
        );
     }
@@ -83,12 +89,12 @@ contract Campaign{
 contract CampaignFactory{
     address[] deployedCampaigns;
     
-    function createCampaign(uint minimum) public{
-            address newCampaign = new Campaign(minimum, msg.sender);
+    function createCampaign(uint minimum,string memory idea,string memory filehash) public{
+            address newCampaign = address(new Campaign(minimum, msg.sender,idea,filehash));
             deployedCampaigns.push(newCampaign);
     }
     
-    function getDeployedCampaigns() public view returns (address[]){
+    function getDeployedCampaigns() public view returns (address[] memory){
         return deployedCampaigns;
     }
 }
