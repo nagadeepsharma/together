@@ -81,13 +81,13 @@ function Campaigndetail(props) {
                 })
             }
             </div>
-             <Container text textAlign="center" style={{marginTop:"3%"}} >
-             <Header as="h2" className="h2">Idea</Header>
+             <Container textAlign="center" style={{marginTop:"3%"}} >
+             <Message><Header as="h2" className="h2">Idea</Header></Message>
              {
                 details.map((i)=>(
                     <>
-                <p>{i[5]}</p>
-                <Image src={i[4]} />
+                <Message><Header textAlign="left" as="h4" className="h2">{i[5]}</Header></Message>
+                <iframe style={{width:"100%",height:"70vh" ,marginTop:"5%"}} centered src={i[4]} />
                 </>
                 ))
              }
