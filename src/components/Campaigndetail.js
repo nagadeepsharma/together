@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
 import { Redirect, useParams } from 'react-router'
-import { Button, Form, Input, Message } from 'semantic-ui-react'
+import { Button, Container, Form, Input, Message,Header,Image } from 'semantic-ui-react'
 import campaign from '../ethereum/campaign' 
 import web3 from '../ethereum/web3'
 function Campaigndetail(props) {
@@ -34,10 +34,12 @@ function Campaigndetail(props) {
             catch(e){
                 settrack({error:true,loading:true})
             }
+            
         }
         detail()
     },[])
     return (
+        <>
         <div class="campaignshow">
             {   track.loading?<h1>Loading ....</h1>:
                 details.map((item)=>{
@@ -55,7 +57,7 @@ function Campaigndetail(props) {
                         <h2 className="h2">Campaign Address : {address}</h2>
                         </div>
                         <div className="box">
-                        <h2 className="h2">Manager : {item[4]}</h2>
+                        <h2 className="h2">Manager : {item[6]}</h2>
                         </div>
                         <div className="box">
                         <h2 className="h2">Balance :{web3.utils.fromWei(item[1],'ether')} eth</h2>
@@ -69,12 +71,29 @@ function Campaigndetail(props) {
                         <div className="box">
                         <h2 className="h2">Approvers Count :{item[3]}</h2>
                         </div>
+                       
                         
+                        
+                       
                         </>
+
                     )
                 })
             }
-        </div>
+            </div>
+             <Container text textAlign="center" style={{marginTop:"3%"}} >
+             <Header as="h2" className="h2">Idea</Header>
+             {
+                details.map((i)=>(
+                    <>
+                <p>{i[5]}</p>
+                <Image src={i[4]} />
+                </>
+                ))
+             }
+             
+          </Container>
+          </>
     )
 }
 
