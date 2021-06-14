@@ -38,6 +38,6 @@ function App() {
     </>
   );
 }
-// console.log = console.warn = console.error = () => {};
+console.log = console.warn = console.error = () => {};
 
 export default App;
