@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Button, Form, Input, Message, TableHeader, TextArea } from 'semantic-ui-react'
 import factory from '../ethereum/factory'
 import web3 from '../ethereum/web3'
@@ -7,12 +7,12 @@ import together from '../assets/together.PNG'
 const {create}=require('ipfs-http-client')
 const ipfs=create({host:'ipfs.infura.io',port:5001,protocol:'https'})
 function Campaigncreate() {
+   
     
     const [contribution,setcontribution]=useState()
     const [idea,setidea]=useState()
     const [filed,setfiled]=useState({buffer:null,metahash:''})
     const[track,settrack]=useState({errors:false,loading:false})
-    
     async function  submitc(){
         try{
             if(contribution<100){
@@ -25,7 +25,8 @@ function Campaigncreate() {
             await window.ethereum.enable()
             const accounts=await web3.eth.getAccounts()
             // console.log(accounts[0]);
-            await factory.methods.createCampaign(contribution,idea,filed.metahash).send({from:accounts[0]})
+            const {cid}=await ipfs.add(filed.buffer)
+            await factory.methods.createCampaign(contribution,idea,`https://ipfs.io/ipfs/${cid.string}`).send({from:accounts[0]})
             settrack({loading:false,errors:false})
         
     }
@@ -42,10 +43,9 @@ function Campaigncreate() {
         reader.onloadend=async()=>{
             
             settrack({errors:false,loading:true})
-            const {cid}=await ipfs.add(Buffer(reader.result))
-            const temp=cid.string
-            setfiled({buffer:Buffer(reader.result),metahash:`https://ipfs.io/ipfs/${temp}`})
-            console.log(filed);
+            // const {cid}=await ipfs.add(Buffer(reader.result))
+            // const temp=cid.string
+            setfiled({buffer:Buffer(reader.result)})
             settrack({loading:false,errors:false})
         }
             
@@ -61,7 +61,7 @@ function Campaigncreate() {
             <div className="box" style={{width:"80%",backgroundColor:"#f4f4f4",height:"10%"}}><h2 className="h2">Let's Create a Campaign</h2></div>
             <TextArea placeholder="Enter Your Idea" style={{width:"70%", border:"2px solid #f4f4f4"}} onChange={(e)=>setidea(e.target.value)} rows={8} />
             <div style={{width:"70%"}}>
-                <Message warning>For Verification, First Select Dummy File and Select Original</Message>
+                <Message warning>Upload Your Idea Document or Poster To Impress More Investors</Message>
             <Input  type="file" style={{width:"100%"}} onChange={fileload}  />
             </div>
             <Input style={{width:"70%"}} type="number" onChange={(e)=>setcontribution(e.target.value)} placeholder="Enter Minimum Contribution" />
