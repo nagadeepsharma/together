@@ -1,7 +1,7 @@
 # An Ethereum based Block-Chain Decentralized application that connects Startups and Investors
 # Tech used:
-  Ipfs
-  Solidity
-  React-Hooks
-  Web3
-  Infura
+    Ipfs
+    Solidity
+    React-Hooks
+    Web3
+    Infura
